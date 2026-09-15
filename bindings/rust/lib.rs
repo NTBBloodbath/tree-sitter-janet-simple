@@ -18,4 +18,11 @@ mod tests {
             .set_language(&crate::LANGUAGE.into())
             .expect("Error loading janet_simple language");
     }
+
+    #[test]
+    fn test_highlights_query_compiles() {
+        let language = crate::LANGUAGE.into();
+        tree_sitter::Query::new(&language, crate::HIGHLIGHTS_QUERY)
+            .expect("highlights query must compile against the grammar");
+    }
 }
